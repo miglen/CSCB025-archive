@@ -2,7 +2,9 @@
 CSCB025 - Практика по програмиране и реализация на бази данни
 
 # Описание
-Онлайн магазин - Самостоятелна работа по програмиране и реализация на бази от данни
+Онлайн магазин - Самостоятелна работа по програмиране и реализация на бази от данни.
+
+[Cloudformation](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?templateURL=https://raw.githubusercontent.com/miglen/CSCB025/master/cscb025_cloudformation_template.yml&stackName=cscb025)
 
 # Технологии
  * Език за програмиране: PHP
@@ -30,8 +32,8 @@ CSCB025 - Практика по програмиране и реализация
  * Потребители (users)
    * user_id - Уникален идентификатор
    * username - Потребителско име
-   * password - Парола (хеширана)
-   * role - Роля 1 админ 0 потребител
+   * password - Парола (SHA512 хеширана)
+   * is_admin - Администратор?
  * Поръчки (orders)
    * id - Уникален идентификатор
    * user_id - Потребител
@@ -40,7 +42,7 @@ CSCB025 - Практика по програмиране и реализация
 # Структура на хранилището
 
  * README.md - Прочети ме (този файл)
- * CSCB025_CFN_Template.yml - CloudFormation темплейт за инсталация на магазина.
+ * cscb025_cloudformation_template.yml - CloudFormation темплейт за инсталация на магазина.
  * ./files/
    * ./php - PHP файлове с основна функционалност
    * ./css - Статични CSS файлове 
