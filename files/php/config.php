@@ -9,9 +9,6 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'cscb025');
 define('DB_PASS', 'cscb025');
 define('DB_DB', 'cscb025');
-
-define('PWD', dirname(__FILE__));
-define('CLASS_PATH', PWD.'/files/php' );
 define('TEMPLATE_PATH', PWD.'/files/templates' );
 define('CSS_PATH', PWD.'/files/css' );
 define('JS_PATH', PWD.'/files/js' );

@@ -4,7 +4,9 @@
 #
 
 # Конфигурационен файл
-require_once('./config.php');
+define('PWD', dirname(__FILE__));
+define('CLASS_PATH', PWD.'/files/php' );
+require_once(CLASS_PATH.'/config.php');
 
 # Create new Plates instance
 $templates = new League\Plates\Engine('./files/php/templates');

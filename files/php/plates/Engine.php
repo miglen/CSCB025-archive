@@ -2,18 +2,18 @@
 
 namespace League\Plates;
 
-require_once('./Template/Functions.php');
-require_once('./Template/Func.php');
-require_once('./Template/Data.php');
-require_once('./Template/Directory.php');
-require_once('./Template/Folders.php');
-require_once('./Template/Folder.php');
-require_once('./Template/FileExtension.php');
-require_once('./Template/Template.php');
-require_once('./Template/Name.php');
-require_once('./Extension/ExtensionInterface.php');
-require_once('./Extension/URI.php');
-require_once('./Extension/Asset.php');
+require_once(dirname(__FILE__).'/Template/Functions.php');
+require_once(dirname(__FILE__).'/Template/Func.php');
+require_once(dirname(__FILE__).'/Template/Data.php');
+require_once(dirname(__FILE__).'/Template/Directory.php');
+require_once(dirname(__FILE__).'/Template/Folders.php');
+require_once(dirname(__FILE__).'/Template/Folder.php');
+require_once(dirname(__FILE__).'/Template/FileExtension.php');
+require_once(dirname(__FILE__).'/Template/Template.php');
+require_once(dirname(__FILE__).'/Template/Name.php');
+require_once(dirname(__FILE__).'/Extension/ExtensionInterface.php');
+require_once(dirname(__FILE__).'/Extension/URI.php');
+require_once(dirname(__FILE__).'/Extension/Asset.php');
 
 use League\Plates\Extension\ExtensionInterface;
 use League\Plates\Template\Data;
