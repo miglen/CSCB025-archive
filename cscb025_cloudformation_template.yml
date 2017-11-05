@@ -76,16 +76,10 @@ Resources:
               mysql: []
               mysql-server: []
               mysql-libs: []
-              httpd: []
-              php: []
-              php-mysql: []
+              httpd24: []
+              php71: []
+              php71-mysqlnd: []
           files:
-            /tmp/setup.mysql:
-              content: !Sub |
-                CREATE DATABASE ${DBName} GRANT ALL ON ${DBName}.* TO '${DBUser}'@localhost IDENTIFIED BY '${DBPassword}';
-              mode: '000400'
-              owner: root
-              group: root
             /etc/cfn/cfn-hup.conf:
               content: !Sub |
                 [main]
@@ -101,6 +95,26 @@ Resources:
                 path=Resources.WebServerInstance.Metadata.AWS::CloudFormation::Init
                 action=/opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource WebServerInstance --configsets InstallAndRun --region ${AWS::Region}
                 runas=root
+            /tmp/setup.sh:
+              content: !Sub |
+                #!/bin/bash
+                # Reset MySQL root password
+                sleep 5
+                mysqladmin -u root password '${DBRootPassword}'
+                # Create user and table
+                mysql -u root --password='${DBRootPassword}' -e  "create database ${DBName};"
+                mysql -u root --password='${DBRootPassword}' -e  "create user ${DBUser};"
+                mysql -u root --password='${DBRootPassword}' -e  "grant all on ${DBName}.* to '${DBUser}'@'localhost' identified by '${DBPassword}';"
+                # Clone the repository
+                git clone ${Repository} /var/www/html/
+                # Import the schema
+                mysql ${DBName} -u root --password='${DBRootPassword}' < /var/www/html/schema.sql
+                # Cleanup all files
+                rm -f /var/www/html/schema.sql
+                rm -f /tmp/setup.sh
+              mode: '000400'
+              owner: root
+              group: root
           services:
             sysvinit:
               mysqld:
@@ -117,14 +131,8 @@ Resources:
                 - /etc/cfn/hooks.d/cfn-auto-reloader.conf
         Configure:
           commands:
-            01_set_mysql_root_password:
-              command: "mysqladmin -u root -p${DBRootPassword}"
-              test: "mysql -u root --password='${DBRootPassword}'"
-            02_create_database:
-              command: "mysql -u root --password='${DBRootPassword}' < /tmp/setup.mysql"
-              test: "mysql ${DBName} -u root --password='${DBRootPassword}' >/dev/null 2>&1 </dev/null"
-            03_deploy_app:
-              command: "git clone ${Repository} /var/www/html/"
+            01_setup:
+              command: "bash /tmp/setup.sh"
               test: "ls /var/www/html/index.php"
     Properties:
       ImageId: !Ref 'InstanceAmi'
@@ -162,4 +170,4 @@ Outputs:
     Value: !Join ['', ['http://', !GetAtt [WebServerInstance, PublicDnsName]]]
   SSHCommand:
       Description: SSH Command
-      Value: !Join ['', ['ssh -i', !Ref KeyName, 'ec2-user@', !GetAtt [WebServerInstance, PublicIp]]]
+      Value: !Join ['', ['ssh -i ', !Ref KeyName, '.pem ',  'ec2-user@', !GetAtt [WebServerInstance, PublicIp]]]
