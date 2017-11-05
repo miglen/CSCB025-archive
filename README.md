@@ -8,8 +8,9 @@ CSCB025 - Практика по програмиране и реализация
 
 # Технологии
  * Език за програмиране: PHP
-  * Темплейти: [Plates](http://platesphp.com/)
+  * Клас за темплейти: [Plates](http://platesphp.com/)
  * База от данни: MySQL
+ * Външен вид: [Obaju](https://bootstrapious.com/p/obaju-e-commerce-template) от [Ondrej Svestka](http://ondrejsvestka.cz/)
  * Уеб сървър: Apache
  * Хостинг: AWS
 
