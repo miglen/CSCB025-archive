@@ -1,12 +1,30 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title><?=$this->e($title)?> | <?=$this->e($company)?></title>
+<?php $this->insert('header', ['title' => $this->e($title)]) ?>
 </head>
 <body>
+    <!-- *** TOPBAR *** -->
+    <?php $this->insert('topbar') ?>
+    <!-- *** TOP BAR END *** -->
 
-<?=$this->section('content')?>
+    <!-- *** NAVBAR *** -->
+    <?php $this->insert('navbar') ?>
+    <!-- *** NAVBAR END *** -->
+    
+    <!-- *** MAIN CONTENT *** -->
+    <div id="all">
 
-<?=$this->section('scripts')?>
+        <div id="content">
+        
+        <?=$this->section('content')?>
+        
+        </div>
+        <!-- /#content -->
+    <!-- *** MAIN CONTENT END *** -->
+    
+    <?php $this->insert('footer') ?>
 
 </body>
 </html>

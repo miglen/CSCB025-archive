@@ -1,9 +1,7 @@
-<?php $this->layout('layout', ['title' => 'User Profile']) ?>
+<?php $this->layout('layout', ['title' => 'Дрешник - магазин за най-уникалните дрехи на света!']) ?>
 
 <h1>User Profile</h1>
 <p>Hello, <?=$this->e($name)?>!</p>
-
-<?php $this->insert('sidebar') ?>
 
 <?php $this->push('scripts') ?>
     <script>

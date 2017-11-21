@@ -7,7 +7,8 @@
 define('PWD', dirname(__FILE__));
 define('CLASS_PATH', PWD.'/files/php' );
 require_once(CLASS_PATH.'/config.php');
-
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+print_r($uri);
 # Create new Plates instance
 $templates = new League\Plates\Engine('./files/php/templates');
 
