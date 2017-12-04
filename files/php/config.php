@@ -2,7 +2,7 @@
 #
 # Основен конфигурационен файл
 #
-ini_set( "display_errors", true );
+# ini_set( "display_errors", true );
 # error_reporting(E_ALL);
 
 define('DB_HOST', 'localhost');

@@ -1,4 +1,4 @@
-_________________________________________________________ -->
+
    <div id="top">
        <div class="container">
            <div class="col-md-6 offer" data-animate="fadeInDown">
