@@ -23,155 +23,68 @@
         <!--/.navbar-header -->
 
         <div class="navbar-collapse collapse" id="navigation">
-
             <ul class="nav navbar-nav navbar-left">
                 <li class="active"><a href="index.html">Начало</a>
                 </li>
-                <li class="dropdown yamm-fw">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Мъже <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="yamm-content">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h5>Дрехи</h5>
-                                        <ul>
-                                            <li><a href="category.html">Блузи</a>
-                                            </li>
-                                            <li><a href="category.html">Ризи</a>
-                                            </li>
-                                            <li><a href="category.html">Панталони</a>
-                                            </li>
-                                            <li><a href="category.html">Аксесоари</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Обувки</h5>
-                                        <ul>
-                                            <li><a href="category.html">Спортни</a>
-                                            </li>
-                                            <li><a href="category.html">Сандали</a>
-                                            </li>
-                                            <li><a href="category.html">Планински</a>
-                                            </li>
-                                            <li><a href="category.html">Официални</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Аксесоари</h5>
-                                        <ul>
-                                            <li><a href="category.html">Колани</a>
-                                            </li>
-                                            <li><a href="category.html">Гащи</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.yamm-content -->
-                        </li>
-                    </ul>
-                </li>
 
-                <li class="dropdown yamm-fw">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Жени <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="yamm-content">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h5>Дрехи</h5>
-                                        <ul>
-                                            <li><a href="category.html">Блузи</a>
-                                            </li>
-                                            <li><a href="category.html">Ризи</a>
-                                            </li>
-                                            <li><a href="category.html">Панталони</a>
-                                            </li>
-                                            <li><a href="category.html">Аксесоари</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Обувки</h5>
-                                        <ul>
-                                            <li><a href="category.html">Спортни</a>
-                                            </li>
-                                            <li><a href="category.html">Сандали</a>
-                                            </li>
-                                            <li><a href="category.html">Планински</a>
-                                            </li>
-                                            <li><a href="category.html">Официални</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Аксесоари</h5>
-                                        <ul>
-                                            <li><a href="category.html">Колани</a>
-                                            </li>
-                                            <li><a href="category.html">Гащи</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.yamm-content -->
-                        </li>
-                    </ul>
-                </li>
 
-                
-                                    <li class="dropdown yamm-fw">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Деца <b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <div class="yamm-content">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <h5>Дрехи</h5>
-                                                            <ul>
-                                                                <li><a href="category.html">Блузи</a>
-                                                                </li>
-                                                                <li><a href="category.html">Ризи</a>
-                                                                </li>
-                                                                <li><a href="category.html">Панталони</a>
-                                                                </li>
-                                                                <li><a href="category.html">Аксесоари</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <h5>Обувки</h5>
-                                                            <ul>
-                                                                <li><a href="category.html">Спортни</a>
-                                                                </li>
-                                                                <li><a href="category.html">Сандали</a>
-                                                                </li>
-                                                                <li><a href="category.html">Планински</a>
-                                                                </li>
-                                                                <li><a href="category.html">Официални</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <h5>Аксесоари</h5>
-                                                            <ul>
-                                                                <li><a href="category.html">Колани</a>
-                                                                </li>
-                                                                <li><a href="category.html">Гащи</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.yamm-content -->
-                                            </li>
-                                        </ul>
-                                    </li>
-
+                <?php
+                global $db;
+                $result = $db -> select("SELECT * FROM `categories` WHERE `parent` IS NULL;");
+                foreach($result as $top_menu){
+?>
+<li class="dropdown yamm-fw">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><?php echo $top_menu['title']; ?> <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li>
+            <div class="yamm-content">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h5>Дрехи</h5>
+                        <ul>
+                            <li><a href="category.html">Блузи</a>
+                            </li>
+                            <li><a href="category.html">Ризи</a>
+                            </li>
+                            <li><a href="category.html">Панталони</a>
+                            </li>
+                            <li><a href="category.html">Аксесоари</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5>Обувки</h5>
+                        <ul>
+                            <li><a href="category.html">Спортни</a>
+                            </li>
+                            <li><a href="category.html">Сандали</a>
+                            </li>
+                            <li><a href="category.html">Планински</a>
+                            </li>
+                            <li><a href="category.html">Официални</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5>Аксесоари</h5>
+                        <ul>
+                            <li><a href="category.html">Колани</a>
+                            </li>
+                            <li><a href="category.html">Гащи</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /.yamm-content -->
+        </li>
+    </ul>
+</li>
+<?php
+                }
+                #print_r($result);
+                ?>
+          
             </ul>
 
         </div>

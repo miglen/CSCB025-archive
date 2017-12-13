@@ -8,13 +8,13 @@
                         <h4>Страници</h4>
 
                         <ul>
-                            <li><a href="text.html">За нас</a>
+                            <li><a href="/page/4">За нас</a>
                             </li>
-                            <li><a href="text.html">Условия за ползване</a>
+                            <li><a href="/page/3">Условия за ползване</a>
                             </li>
-                            <li><a href="faq.html">ЧЗВ</a>
+                            <li><a href="/faq">Често Задавани Въпроси</a>
                             </li>
-                            <li><a href="contact.html">За контакти</a>
+                            <li><a href="/contact">За контакти</a>
                             </li>
                         </ul>
 

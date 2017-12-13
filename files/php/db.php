@@ -1,20 +1,5 @@
 <?php 
-#
-# Основен конфигурационен файл
-#
-ini_set( "display_errors", true );
-error_reporting(E_ALL);
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', 'cscb025');
-define('DB_NAME', 'cscb025');
-define('TEMPLATE_PATH', PWD.'/files/php/templates' );
-define('CSS_PATH', PWD.'/files/css' );
-define('JS_PATH', PWD.'/files/js' );
-
-
-# Включване клас за управление на ДБ
 class Db {
     // The database connection
     protected static $connection;
@@ -29,11 +14,6 @@ class Db {
         if(!isset(self::$connection)) {
             // Load configuration as an array. Use the actual location of your configuration file
             self::$connection = new mysqli('localhost', DB_USER, DB_PASS, DB_NAME);
-            /* change character set to utf8 */
-          if (!self::$connection->set_charset("utf8")) {
-              printf("Error loading character set utf8: %s\n", self::$connection->error);
-              exit();
-          }
         }
 
         // If connection was not successful, handle the error
@@ -99,10 +79,4 @@ class Db {
         return "'" . $connection -> real_escape_string($value) . "'";
     }
 }
-$db = new Db();
-
-
-
-# Включване на темплейти (Platesphp.com)
-require_once(CLASS_PATH.'/plates/Engine.php');
-?>
+ ?>
