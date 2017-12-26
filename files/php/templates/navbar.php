@@ -108,9 +108,9 @@
 
         <div class="collapse clearfix" id="search">
 
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" method="post" action="/search/">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Търсене в продуктите">
+                    <input type="text" name="q" class="form-control" placeholder="Търсене в продуктите">
                     <span class="input-group-btn">
 
   <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>

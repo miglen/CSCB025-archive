@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
 
     <title>
-        <?=$this->e($title)?>
+        Дрешник | <?=$this->e($title)?>
     </title>
 
     <meta name="keywords" content="">
