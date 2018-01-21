@@ -1,19 +1,25 @@
 <?php 
 
+# Включване клас за управление на ДБ
 class Db {
     // The database connection
     protected static $connection;
 
     /**
      * Connect to the database
-     * 
+     *
      * @return bool false on failure / mysqli MySQLi object instance on success
      */
-    public function connect() {    
+    public function connect() {
         // Try and connect to the database
         if(!isset(self::$connection)) {
             // Load configuration as an array. Use the actual location of your configuration file
             self::$connection = new mysqli('localhost', DB_USER, DB_PASS, DB_NAME);
+            /* change character set to utf8 */
+          if (!self::$connection->set_charset("utf8")) {
+              printf("Error loading character set utf8: %s\n", self::$connection->error);
+              exit();
+          }
         }
 
         // If connection was not successful, handle the error
@@ -23,6 +29,15 @@ class Db {
         }
         return self::$connection;
     }
+    
+    /**
+     * PDO Object
+     *
+     * @return PDO Object - Connection to mysql
+     */
+     public function pdo(){
+       return new PDO("mysql:host=localhost;dbname=".DB_NAME, DB_USER, DB_PASS);
+     }
 
     /**
      * Query the database
@@ -60,7 +75,7 @@ class Db {
 
     /**
      * Fetch the last error from the database
-     * 
+     *
      * @return string Database error message
      */
     public function error() {
@@ -79,4 +94,5 @@ class Db {
         return "'" . $connection -> real_escape_string($value) . "'";
     }
 }
+
  ?>

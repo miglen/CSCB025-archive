@@ -1,8 +1,5 @@
 <?php 
 
-  # Create new Plates instance
-  $templates = new League\Plates\Engine(TEMPLATE_PATH);
-
   global $db, $uri;
   $search_query = $_REQUEST['q'];
   

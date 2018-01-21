@@ -10,99 +10,26 @@ define('DB_USER', 'root');
 define('DB_PASS', 'cscb025');
 define('DB_NAME', 'cscb025');
 define('TEMPLATE_PATH', PWD.'/files/php/templates' );
+define('CLASS_PATH', PWD.'/files/php' );
 define('CSS_PATH', PWD.'/files/css' );
 define('JS_PATH', PWD.'/files/js' );
 
+# Включване на Функции
+require_once(CLASS_PATH.'/functions.php');
 
-# Включване клас за управление на ДБ
-class Db {
-    // The database connection
-    protected static $connection;
+# Composer modules loading
+require_once(PWD.'/vendor/autoload.php');
 
-    /**
-     * Connect to the database
-     * 
-     * @return bool false on failure / mysqli MySQLi object instance on success
-     */
-    public function connect() {    
-        // Try and connect to the database
-        if(!isset(self::$connection)) {
-            // Load configuration as an array. Use the actual location of your configuration file
-            self::$connection = new mysqli('localhost', DB_USER, DB_PASS, DB_NAME);
-            /* change character set to utf8 */
-          if (!self::$connection->set_charset("utf8")) {
-              printf("Error loading character set utf8: %s\n", self::$connection->error);
-              exit();
-          }
-        }
+# Включване на Plates
+$templates = new League\Plates\Engine(TEMPLATE_PATH);
 
-        // If connection was not successful, handle the error
-        if(self::$connection === false) {
-            // Handle error - notify administrator, log to a file, show an error screen, etc.
-            return false;
-        }
-        return self::$connection;
-    }
-
-    /**
-     * Query the database
-     *
-     * @param $query The query string
-     * @return mixed The result of the mysqli::query() function
-     */
-    public function query($query) {
-        // Connect to the database
-        $connection = $this -> connect();
-
-        // Query the database
-        $result = $connection -> query($query);
-
-        return $result;
-    }
-
-    /**
-     * Fetch rows from the database (SELECT query)
-     *
-     * @param $query The query string
-     * @return bool False on failure / array Database rows on success
-     */
-    public function select($query) {
-        $rows = array();
-        $result = $this -> query($query);
-        if($result === false) {
-            return false;
-        }
-        while ($row = $result -> fetch_assoc()) {
-            $rows[] = $row;
-        }
-        return $rows;
-    }
-
-    /**
-     * Fetch the last error from the database
-     * 
-     * @return string Database error message
-     */
-    public function error() {
-        $connection = $this -> connect();
-        return $connection -> error;
-    }
-
-    /**
-     * Quote and escape value for use in a database query
-     *
-     * @param string $value The value to be quoted and escaped
-     * @return string The quoted and escaped string
-     */
-    public function quote($value) {
-        $connection = $this -> connect();
-        return "'" . $connection -> real_escape_string($value) . "'";
-    }
-}
+# Включване на Бази от данни
+require_once(CLASS_PATH.'/db.php');
 $db = new Db();
 
+# Включване на PHP Auth
+$pdo = $db->pdo();
+$phpauth_config = new PHPAuth\Config($pdo);
+$auth   = new PHPAuth\Auth($pdo, $phpauth_config);
 
-
-# Включване на темплейти (Platesphp.com)
-require_once(CLASS_PATH.'/plates/Engine.php');
 ?>

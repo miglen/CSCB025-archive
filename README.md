@@ -53,6 +53,12 @@ CSCB025 - Практика по програмиране и реализация
    * ./css - Статични CSS файлове 
    * ./js - Java Script статични файлове
 
+# Инсталация
+ - git, mysql, php, php composer
+ - cd /var/www/html
+ - git clone https://github.com/miglen/CSCB025.git
+ - composer install
+
 # TODO:
 
  - [x] _Да инсталирам pma за дб-то_

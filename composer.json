@@ -1,0 +1,6 @@
+{
+    "require": {
+        "league/plates": "^3.3",
+        "phpauth/phpauth": "^1.1"
+    }
+}
