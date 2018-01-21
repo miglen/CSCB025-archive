@@ -1,6 +1,5 @@
 <?php 
-
-  global $db, $uri;
+  global $templates, $db, $auth;
   $search_query = $_REQUEST['q'];
   
   #$result = $db -> select("SELECT * FROM `products` WHERE `text` LIKE '%".$search_string."%';");

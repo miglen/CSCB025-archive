@@ -1,8 +1,5 @@
 <?php 
-
-  #global $db, $uri;
-  #$result = $db -> select("SELECT * FROM `faq` WHERE 1;");
-  
+  global $templates, $db, $auth;
   # Preassign data to the layout
   $templates->addData(['company' => 'Име на компанията'], 'layout');
   $templates->addData(['title' => 'Име на компанията'], 'layout');

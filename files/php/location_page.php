@@ -1,6 +1,5 @@
 <?php 
-
-  global $db, $uri;
+  global $templates, $db, $auth;
   $result = $db -> select("SELECT * FROM `pages` WHERE `page_id`='".intval($uri[1])."' LIMIT 1;");
   
   if($result){

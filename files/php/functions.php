@@ -25,7 +25,10 @@ function get_uri_paths(){
 
 function display_the_page(){
   global $uri;
-  $locations = array('page','category','product','order','cart','faq','contact','search');
+  $locations = array('page','category','product',
+                     'order','cart','faq',
+                     'contact','search','login',
+                     'register');
   
   if(!in_array($uri[0], $locations)){
     require_once(CLASS_PATH.'/location_index.php');
