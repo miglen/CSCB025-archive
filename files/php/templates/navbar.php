@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-header">
 
-            <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+            <a class="navbar-brand home" href="/" data-animate-hover="bounce">
                 <img src="/files/img/logo.png" alt="Obaju logo" class="hidden-xs">
                 <img src="/files/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Начална страница</span>
             </a>
@@ -24,14 +24,15 @@
 
         <div class="navbar-collapse collapse" id="navigation">
             <ul class="nav navbar-nav navbar-left">
-                <li class="active"><a href="index.html">Начало</a>
+                <li class="active"><a href="/">Начало</a>
                 </li>
 
 
                 <?php
                 global $db;
-                $result = $db -> select("SELECT * FROM `categories` WHERE `parent` IS NULL;");
+                $result = $db -> select("SELECT * FROM `categories` WHERE 1;");
                 foreach($result as $top_menu){
+                  if(!$top_menu['parent']){
 ?>
 <li class="dropdown yamm-fw">
     <a href="/category/<?php echo $top_menu['category_id']; ?>" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><?php echo $top_menu['title']; ?> <b class="caret"></b></a>
@@ -39,39 +40,15 @@
         <li>
             <div class="yamm-content">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <h5>Дрехи</h5>
+                    <div class="col-sm-1">
                         <ul>
-                            <li><a href="category.html">Блузи</a>
-                            </li>
-                            <li><a href="category.html">Ризи</a>
-                            </li>
-                            <li><a href="category.html">Панталони</a>
-                            </li>
-                            <li><a href="category.html">Аксесоари</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3">
-                        <h5>Обувки</h5>
-                        <ul>
-                            <li><a href="category.html">Спортни</a>
-                            </li>
-                            <li><a href="category.html">Сандали</a>
-                            </li>
-                            <li><a href="category.html">Планински</a>
-                            </li>
-                            <li><a href="category.html">Официални</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3">
-                        <h5>Аксесоари</h5>
-                        <ul>
-                            <li><a href="category.html">Колани</a>
-                            </li>
-                            <li><a href="category.html">Гащи</a>
-                            </li>
+                        <?php 
+                        foreach($result as $sub_menu){
+                          if($top_menu['category_id'] == $sub_menu['parent']){
+                            echo '<li><a href="/category/'.$sub_menu['category_id'].'">'.$sub_menu['title'].'</a></li>';
+                          }  
+                        }
+                         ?>
                         </ul>
                     </div>
                 </div>
@@ -81,9 +58,9 @@
     </ul>
 </li>
 <?php
-                }
-                #print_r($result);
-                ?>
+}}
+#print_r($result);
+?>
           
             </ul>
 

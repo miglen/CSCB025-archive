@@ -22,7 +22,7 @@
     
                     <div class="col-md-12">
                         <ul class="breadcrumb">
-                            <li><a href="#">Начало</a>
+                            <li><a href="/">Начало</a>
                             </li>
                             <li>Често задавани въпроси</li>
                         </ul>

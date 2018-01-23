@@ -37,4 +37,15 @@ function display_the_page(){
   }
 
 }
+
+function nav_location($category_id){
+  global $db;
+  $result = $db -> select("SELECT * FROM `categories` WHERE `category_id`=".intval($category_id)." LIMIT 1;");
+  $category = $result[0];
+
+  $location = '<li><a href="/category/'.$category['category_id'].'">'.$category['title'].'</a></li>';
+  // Call recursively for all parent categories
+  $location = ($category['parent']) ? nav_location($category['parent']).$location : $location;
+  return $location;
+}
 ?>
