@@ -24,14 +24,18 @@
                         <ul class="breadcrumb">
                             <li><a href="/">Начало</a>
                             </li>
-                            <li>Често задавани въпроси</li>
+                            <li>Регистрация</li>
                         </ul>
     
                     </div>
-                  <div class="col-md-3">
-                    <!-- *** PAGES MENU *** -->
-                    <?php $this->insert('sidebar-pages') ?>
-                    <!-- *** PAGES MENU END *** -->
+    
+                    <div class="col-md-3">
+                      <!-- *** PAGES MENU *** -->
+                      <?php $this->insert('sidebar-pages') ?>
+                      <!-- *** PAGES MENU END *** -->
+                        <!-- *** PAGES MENU END *** -->
+    
+    
                         <div class="banner">
                             <a href="#">
                                 <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
@@ -40,18 +44,36 @@
                     </div>
     
                     <div class="col-md-9">
-<?php
-global $db;
-$result = $db -> select("SELECT * FROM `pages` WHERE `page_id`='".$this->e($page_id)."';");
-?>
     
                         <div class="box" id="contact">
-                            <h1><?php echo $result[0]['title']; ?></h1>
-    
-                            <p class="lead"><?php echo $result[0]['text']; ?></p>
-  
-    
-    
+                            <h1>Регистрация</h1>
+    <?php 
+global $auth,$db;
+
+if (isset($_POST['submit']) && isset($_POST['address']) && intval($_POST['address'])==202) {
+
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $confirm_password = $_POST['confirm_password'];
+  $auth->register($email, $password, $confirm_password);
+  ?>
+  Вие се регистрирахте успешно...
+  <?php
+
+}else{
+  ?>
+  <form method="post" action="/register">
+    E-mail: <input type="text" name="email"><br><br>
+    Парола: <input type="password" name="password"><br><br>
+    Повтори парола: <input type="password" name="confirm_password"><br><br>
+    Колко е две плюс двеста?: <input type="text" name="address"><br><br>
+    <input type="submit" value="Ok" name="submit">
+  </form>
+  <?php
+}
+
+     ?>
+                            <p class="lead">eohoo</p>
                         </div>
     
     
