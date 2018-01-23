@@ -34,7 +34,7 @@
                 foreach($result as $top_menu){
 ?>
 <li class="dropdown yamm-fw">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><?php echo $top_menu['title']; ?> <b class="caret"></b></a>
+    <a href="/category/<?php echo $top_menu['category_id']; ?>" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><?php echo $top_menu['title']; ?> <b class="caret"></b></a>
     <ul class="dropdown-menu">
         <li>
             <div class="yamm-content">

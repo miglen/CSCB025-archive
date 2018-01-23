@@ -25,7 +25,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Вход</a>
                             </li>
-                            <li><a href="register.html">Регистрация</a>
+                            <li><a href="/register">Регистрация</a>
                             </li>
                         </ul>
 
@@ -41,23 +41,23 @@
                         <h5>Мъже</h5>
 
                         <ul>
-                            <li><a href="category.html">Блузи</a>
+                            <li><a href="/category/1">Блузи</a>
                             </li>
-                            <li><a href="category.html">Ризи</a>
+                            <li><a href="/category/2">Ризи</a>
                             </li>
-                            <li><a href="category.html">Аксесоари</a>
+                            <li><a href="/category/3">Аксесоари</a>
                             </li>
                         </ul>
 
                         <h5>Дами</h5>
                         <ul>
-                            <li><a href="category.html">Блузи</a>
+                            <li><a href="/category/4">Блузи</a>
                             </li>
-                            <li><a href="category.html">Поли</a>
+                            <li><a href="/category/5">Поли</a>
                             </li>
-                            <li><a href="category.html">Панталони</a>
+                            <li><a href="/category/6">Панталони</a>
                             </li>
-                            <li><a href="category.html">Аксесоари</a>
+                            <li><a href="/category/7">Аксесоари</a>
                             </li>
                         </ul>
 
