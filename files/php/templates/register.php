@@ -62,18 +62,64 @@ if (isset($_POST['submit']) && isset($_POST['address']) && intval($_POST['addres
 
 }else{
   ?>
-  <form method="post" action="/register">
-    E-mail: <input type="text" name="email"><br><br>
-    Парола: <input type="password" name="password"><br><br>
-    Повтори парола: <input type="password" name="confirm_password"><br><br>
-    Колко е две плюс двеста?: <input type="text" name="address"><br><br>
-    <input type="submit" value="Ok" name="submit">
-  </form>
+                        <form method="post" action="/register">
+                             <div class="row">
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="firstname">Име</label>
+                                         <input type="text" name="firstname" class="form-control" id="firstname">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="lastname">Фамилия</label>
+                                         <input type="text" name="lastname" class="form-control" id="lastname">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="email">Email</label>
+                                         <input type="text" name="email" class="form-control" id="email">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="phone">Телефон</label>
+                                         <input type="text" name="phone" class="form-control" id="phone">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="password">Парола</label>
+                                         <input type="password" name="password" class="form-control" id="password">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="confirm_password">Потвърди парола</label>
+                                         <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="form-group">
+                                         <label for="subject">Колко прави две плюс двеста и осем?</label>
+                                         <input type="text" name="address" class="form-control" id="subject">
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                   <div class="form-group">
+                                       <label for="a"></label>
+                                       <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Регистрирай се!</button>
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- /.row -->
+                         </form>
   <?php
 }
 
      ?>
-                            <p class="lead">eohoo</p>
+
                         </div>
     
     
