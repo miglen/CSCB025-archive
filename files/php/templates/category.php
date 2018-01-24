@@ -39,7 +39,10 @@
 
     <?php
                       global $db;
-                      $result = $db -> select("SELECT * FROM `products` WHERE `category_id`='".$this->e($category_id)."';");
+                      $result = $db -> select("SELECT * FROM `products` WHERE category_id IN (
+  SELECT category_id FROM categories 
+    WHERE category_id = '".$this->e($category_id)."' OR parent = '".$this->e($category_id)."'
+);");
                       foreach($result as $product){
     ?>
     <div class="col-md-3 col-sm-4">

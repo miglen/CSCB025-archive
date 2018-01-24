@@ -36,30 +36,15 @@
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Топ категории</h4>
-
-                        <h5>Мъже</h5>
-
-                        <ul>
-                            <li><a href="/category/1">Блузи</a>
-                            </li>
-                            <li><a href="/category/2">Ризи</a>
-                            </li>
-                            <li><a href="/category/3">Аксесоари</a>
-                            </li>
-                        </ul>
-
-                        <h5>Дами</h5>
-                        <ul>
-                            <li><a href="/category/4">Блузи</a>
-                            </li>
-                            <li><a href="/category/5">Поли</a>
-                            </li>
-                            <li><a href="/category/6">Панталони</a>
-                            </li>
-                            <li><a href="/category/7">Аксесоари</a>
-                            </li>
-                        </ul>
+                        <h4>Топ категории</h4><ul>
+<?php 
+global $db;
+global $db;
+$result = $db -> select("SELECT DISTINCT * FROM `categories` ORDER BY RAND() LIMIT 6;");
+foreach($result as $cat){
+    echo '<li><a href="/category/'.$cat['category_id'].'">'.$cat['title'].'</a></li>';
+}
+?>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -111,13 +96,12 @@
                         <hr>
 
                         <h4>Социални мрежи</h4>
-
                         <p class="social">
-                            <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                            <a href="https://facebook.com/miglen" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/miglen" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
+                            <a href="https://instagram.com/itsmiglen" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+                            <a href="https://plus.google.com/+MiglenEvlogiev" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+                            <a href="mailto:hey@dreshnik.com" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
                         </p>
 
 
@@ -133,9 +117,6 @@
         <!-- /#footer -->
 
         <!-- *** FOOTER END *** -->
-
-
-
 
         <!-- *** COPYRIGHT ***
  _________________________________________________________ -->
@@ -158,9 +139,6 @@
 
     </div>
     <!-- /#all -->
-
-
-    
 
     <!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->

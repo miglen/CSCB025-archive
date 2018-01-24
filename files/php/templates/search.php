@@ -30,45 +30,14 @@
                     </div>
     
                     <div class="col-md-3">
-                        <!-- *** PAGES MENU ***
-     _________________________________________________________ -->
-                        <div class="panel panel-default sidebar-menu">
-    
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Страници</h3>
-                            </div>
-    
-                            <div class="panel-body">
-                                <ul class="nav nav-pills nav-stacked">
-<?php
-  global $db;
-  $result = $db -> select("SELECT * FROM `pages` WHERE 1;");
-  foreach($result as $page){
-?>
-<li>
-    <a href="/page/<?php echo $page['page_id']; ?>"><?php echo $page['title']; ?></a>
-</li>
-<?php 
-}
-?>
-<li>
-    <a href="/faq">ЧЗВ</a>
-</li>
-<li>
-    <a href="/contact">За контакт</a>
-</li>
-    
-                                </ul>
-    
-                            </div>
-                        </div>
-    
+                        <!-- *** PAGES MENU *** -->
+                      <?php $this->insert('sidebar-pages') ?>
                         <!-- *** PAGES MENU END *** -->
     
     
                         <div class="banner">
                             <a href="#">
-                                <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
+                                <img src="/img/banner.jpg" alt="sales 2014" class="img-responsive">
                             </a>
                         </div>
                     </div>
@@ -90,7 +59,19 @@
                                 </div>
                             </form>
                             
-                            <p class="lead"><?=$name?></p>
+                            <p class="lead">
+                              <ul>
+<?php 
+
+foreach($search_result as $r){
+  if($r['type']=='page'){
+    echo '<li><a href="/page/'.$r['id'].'">Страница: '.$r['title'].'</a></li>';
+  }else{
+    echo '<li><a href="/product/'.$r['id'].'">Продукт: '.$r['title'].'</a></li>';
+  }
+}
+?>
+</ul>      </p>
                             
                             <hr>
   
