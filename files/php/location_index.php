@@ -4,6 +4,6 @@
   $templates->addData(['company' => 'Име на компанията'], 'layout');
 
   #  Render a template
-  echo $templates->render('profile', ['name' => '404 не е намерено ниииищо...']);
+  echo $templates->render('index', ['name' => '404 не е намерено ниииищо...']);
 
  ?>

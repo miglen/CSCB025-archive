@@ -28,7 +28,7 @@ function display_the_page(){
   $locations = array('page','category','product',
                      'order','cart','faq',
                      'contact','search','login',
-                     'register');
+                     'register','profile');
   
   if(!in_array($uri[0], $locations)){
     require_once(CLASS_PATH.'/location_index.php');
